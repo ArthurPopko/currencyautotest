@@ -1,0 +1,16 @@
+{
+  "name": "currencyautotest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "arthur",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "chance": "^1.1.8",
+    "cypress": "^8.4.1"
+  }
+}
