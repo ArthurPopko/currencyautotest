@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-
+import exchangePage from "../pageObject/exchangePage";
 describe('planetsArray', () => {
     before(() => {
         // cy.fixture('newPlanet').then(data => {
@@ -28,8 +28,28 @@ describe('planetsArray', () => {
     4) Пара для конверсии это USD и CAD. Вбиваем эти значения в поля и инициируем поиск
     5) Конечная точка теста - проверка рейта конверсии валют (рейт - это исходные данные из фикстуры)*/
 
-    it('Exchange autotest ', () => {
-        cy.log('Currency exchange autotest')
+    // it('Exchange autotest ', () => {
+    //     cy.log('Currency exchange autotest')
+    //     describe('UI test for google store', () => {
+    //         it('Positive: find the item by name in google store', () => {
+    //             cy.visit('https://store.google.com/us/?hl=eng-US')
+    //             cy.get(cy.get('.xZx5x').click())
+    //             cy.get('.MsT9Jc').type(`Google Pixel {enter}`)
+    //             cy.get('a[href="/product/pixel_5"]').should("exist")
+    //         })
+    //     })
+    // })
 
+    it('Positive: find the item by name in google store', () => {
+        // cy.get('@productData').then((productData) => {
+            cy.log("GIVEN User is at Exchange page")
+            exchangePage.open()
+
+            cy.log("When User perform exchange")
+            exchangePage.performExchange(12, 'USD', 'CAD')
+            //
+            // SearchResultsPage.getProductByDocId(productData.url)
+            //     .should("exist")
+        // })
     })
 })

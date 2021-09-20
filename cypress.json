@@ -1,4 +1,6 @@
 {
-  "integrationFolder": "cypress/tests"
+  "baseUrl": "https://www.xe.com/currencyconverter",
+  "integrationFolder": "cypress/tests",
+  "defaultCommandTimeout": 20000
 }
 
