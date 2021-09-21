@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 import Chance from 'chance'
 import exchangePage from "../pageObject/exchangePage";
+import testingData from "../data/testingData"
 
 describe('Currency Exchange', () => {
     beforeEach(() => {
@@ -30,23 +31,6 @@ describe('Currency Exchange', () => {
     4) Пара для конверсии это USD и CAD. Вбиваем эти значения в поля и инициируем поиск
     5) Конечная точка теста - проверка рейта конверсии валют (рейт - это исходные данные из фикстуры)*/
 
-    let testingData = [
-        {
-            description: "an integer currency amount",
-            amountData: {
-                amount: chance.integer({min: 1, max: 100})
-            },
-            toCurrency: chance.currency().code
-        },
-        {
-            description: "a floating currency amount",
-            amountData: {
-                amount: chance.floating({min: 0, max: 100, fixed: 2})
-            },
-            toCurrency: chance.currency().code
-        }
-    ]
-
     testingData.forEach(({description, amountData, toCurrency}) => {
         it(`Positive: user performs exchange ${description} from USD to ${toCurrency}`, () => {
             cy.get('@currencyData').then((currencyData) => {
@@ -57,7 +41,8 @@ describe('Currency Exchange', () => {
                 exchangePage.performExchange(amountData.amount, currencyData.base, toCurrency)
 
                 cy.log('THEN currency rates appears')
-                exchangePage.assertCurrencyRates()
+                exchangePage.assertCurrencyRates(toCurrency)
+                console.log(toCurrency);
             })
         })
     })
