@@ -1,10 +1,11 @@
 /// <reference types="cypress" />
+import Chance from 'chance'
 import exchangePage from "../pageObject/exchangePage";
+
 describe('planetsArray', () => {
     before(() => {
-        // cy.fixture('newPlanet').then(data => {
-        //     cy.wrap(data).as('newPlanet')
-        // })
+        // cy.fixture('exchangePage').then(exchangeData => {
+        //     cy.wrap(exchangeData).as(exchangeData)
     })
 
     /*Задание 10
@@ -28,28 +29,33 @@ describe('planetsArray', () => {
     4) Пара для конверсии это USD и CAD. Вбиваем эти значения в поля и инициируем поиск
     5) Конечная точка теста - проверка рейта конверсии валют (рейт - это исходные данные из фикстуры)*/
 
-    // it('Exchange autotest ', () => {
-    //     cy.log('Currency exchange autotest')
-    //     describe('UI test for google store', () => {
-    //         it('Positive: find the item by name in google store', () => {
-    //             cy.visit('https://store.google.com/us/?hl=eng-US')
-    //             cy.get(cy.get('.xZx5x').click())
-    //             cy.get('.MsT9Jc').type(`Google Pixel {enter}`)
-    //             cy.get('a[href="/product/pixel_5"]').should("exist")
-    //         })
-    //     })
-    // })
+    let testingData = [
+        {
+            description: "an integer currency amount",
+            amountData: {
+                amount: chance.integer({ min: 1, max: 100 }),
+            }
+        },
+        {
+            description: "a floating currency amount",
+            amountData: {
+                amount:chance.floating({ min: 0, max: 100, fixed: 2 }),
+            }
+        }
+    ]
 
-    it('Positive: find the item by name in google store', () => {
-        // cy.get('@productData').then((productData) => {
-            cy.log("GIVEN User is at Exchange page")
-            exchangePage.open()
+    testingData.forEach(({description, amountData}) => {
+        it(`Positive: user performs exchange ${description} from USD`, () => {
+            cy.fixture('currencyData').then(currencyData => {
+                cy.log("GIVEN User is at Exchange page")
+                exchangePage.open()
 
-            cy.log("When User perform exchange")
-            exchangePage.performExchange(12, 'USD', 'CAD')
-            //
-            // SearchResultsPage.getProductByDocId(productData.url)
-            //     .should("exist")
-        // })
+                cy.log("When User performs exchange")
+                exchangePage.performExchange(amountData.amount, currencyData.base, 'CAD')
+
+                cy.log('THEN currency rates appears')
+                exchangePage.assertCurrencyRates()
+            })
+        })
     })
 })
