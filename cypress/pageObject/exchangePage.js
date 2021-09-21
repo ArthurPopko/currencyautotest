@@ -3,15 +3,15 @@ class exchangePage {
         cy.visit('/');
     }
 
-    get amountInput () {
+    get amountInput() {
         return cy.get('#amount');
     }
 
-    get fromInput () {
+    get fromInput() {
         return cy.get('#midmarketFromCurrency').click()
     }
 
-    get toInput () {
+    get toInput() {
         return cy.get('#midmarketToCurrency').click()
     }
 
@@ -24,19 +24,24 @@ class exchangePage {
         this.fromInput.type(`${fromCurrency}`)
         this.toInput.should('be.enabled').type(`${toCurrency}{enter}{enter}`)
         // this.submitButton.click();
+
     }
 
     get assertCurrencyRateFrom() {
-        return cy.get('.unit-rates___StyledDiv-sc-1dk593y-0 > :nth-child(1)').contains('1 USD')
+        cy.fixture('currencyData').then(currencyData => {
+        return cy.get('.unit-rates___StyledDiv-sc-1dk593y-0 > :nth-child(1)').contains(currencyData.base)
+        })
     }
 
-    get assertCurrencyRateTo() {
-        return cy.get('.unit-rates___StyledDiv-sc-1dk593y-0 > :nth-child(2)').contains('1 CAD')
-    }
+    // get assertCurrencyRateTo() {
+    //     cy.fixture('currencyData').then(currencyData => {
+    //         return cy.get('.unit-rates___StyledDiv-sc-1dk593y-0 > :nth-child(2)').contains(currencyData[2][1])
+    //     })
+    // }
 
-    assertCurrencyRates(){
+    assertCurrencyRates() {
         this.assertCurrencyRateFrom
-        this.assertCurrencyRateTo
+        // this.assertCurrencyRateTo
     }
 }
 

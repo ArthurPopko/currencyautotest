@@ -33,25 +33,27 @@ describe('planetsArray', () => {
         {
             description: "an integer currency amount",
             amountData: {
-                amount: chance.integer({ min: 1, max: 100 }),
-            }
+                amount: chance.integer({ min: 1, max: 100 })
+            },
+            toCurrency:chance.currency().code
         },
         {
             description: "a floating currency amount",
             amountData: {
-                amount:chance.floating({ min: 0, max: 100, fixed: 2 }),
-            }
+                amount:chance.floating({ min: 0, max: 100, fixed: 2 })
+            },
+            toCurrency:chance.currency().code
         }
     ]
 
-    testingData.forEach(({description, amountData}) => {
-        it(`Positive: user performs exchange ${description} from USD`, () => {
+    testingData.forEach(({description, amountData, toCurrency}) => {
+        it(`Positive: user performs exchange ${description} from USD to ${toCurrency}`, () => {
             cy.fixture('currencyData').then(currencyData => {
                 cy.log("GIVEN User is at Exchange page")
                 exchangePage.open()
 
                 cy.log("When User performs exchange")
-                exchangePage.performExchange(amountData.amount, currencyData.base, 'CAD')
+                exchangePage.performExchange(amountData.amount, currencyData.base, toCurrency)
 
                 cy.log('THEN currency rates appears')
                 exchangePage.assertCurrencyRates()

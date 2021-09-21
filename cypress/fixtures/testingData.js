@@ -1,6 +1,6 @@
 import Chance from 'chance'
 
-let amountData = [
+let testingData = [
     {
         description: "an integer currency amount",
         amountData: {
