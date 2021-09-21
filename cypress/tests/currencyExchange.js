@@ -2,10 +2,11 @@
 import Chance from 'chance'
 import exchangePage from "../pageObject/exchangePage";
 
-describe('planetsArray', () => {
-    before(() => {
-        // cy.fixture('exchangePage').then(exchangeData => {
-        //     cy.wrap(exchangeData).as(exchangeData)
+describe('Currency Exchange', () => {
+    beforeEach(() => {
+        cy.fixture('currencyData').then(currencyData => {
+            cy.wrap(currencyData).as('currencyData')
+        })
     })
 
     /*Задание 10
@@ -33,22 +34,22 @@ describe('planetsArray', () => {
         {
             description: "an integer currency amount",
             amountData: {
-                amount: chance.integer({ min: 1, max: 100 })
+                amount: chance.integer({min: 1, max: 100})
             },
-            toCurrency:chance.currency().code
+            toCurrency: chance.currency().code
         },
         {
             description: "a floating currency amount",
             amountData: {
-                amount:chance.floating({ min: 0, max: 100, fixed: 2 })
+                amount: chance.floating({min: 0, max: 100, fixed: 2})
             },
-            toCurrency:chance.currency().code
+            toCurrency: chance.currency().code
         }
     ]
 
     testingData.forEach(({description, amountData, toCurrency}) => {
         it(`Positive: user performs exchange ${description} from USD to ${toCurrency}`, () => {
-            cy.fixture('currencyData').then(currencyData => {
+            cy.get('@currencyData').then((currencyData) => {
                 cy.log("GIVEN User is at Exchange page")
                 exchangePage.open()
 
