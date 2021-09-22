@@ -30,8 +30,8 @@ class exchangePage {
     }
 
     get assertCurrencyRateTo() {
-        testingData.forEach(({toCurrency}) => {
-            return cy.get('.unit-rates___StyledDiv-sc-1dk593y-0 > :nth-child(2)').contains(toCurrency)
+        testingData.forEach(({rateFromJson}) => {
+            return cy.get('.unit-rates___StyledDiv-sc-1dk593y-0 > :nth-child(2)').contains(rateFromJson)
         })
     }
 

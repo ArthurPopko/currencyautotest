@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import Chance from 'chance'
+// import Chance from 'chance'
 import exchangePage from "../pageObject/exchangePage";
 import testingData from "../data/testingData"
 
