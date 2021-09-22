@@ -1,5 +1,4 @@
 /// <reference types="cypress" />
-// import Chance from 'chance'
 import exchangePage from "../pageObject/exchangePage";
 import testingData from "../data/testingData"
 
@@ -38,7 +37,7 @@ describe('Currency Exchange', () => {
                 exchangePage.open()
 
                 cy.log("When User performs exchange")
-                exchangePage.performExchange(amountData.amount, currencyData.base, toCurrency)
+                exchangePage.performExchange(amountData.amount, currencyData['base'], toCurrency)
 
                 cy.log('THEN currency rates appears')
                 exchangePage.assertCurrencyRates(toCurrency)
