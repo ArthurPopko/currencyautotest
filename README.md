@@ -1,5 +1,5 @@
-# ArraySetMap
-homework p.5
+# Currency exchange autotest
+homework p.12.3 task 10
 ### Project Description ###
 
 This is the currency exchange autotest.
