@@ -36,8 +36,8 @@ class exchangePage {
     }
 
     assertCurrencyRates() {
-        this.assertCurrencyRateFrom
-        this.assertCurrencyRateTo
+        // this.assertCurrencyRateFrom
+        // this.assertCurrencyRateTo
     }
 }
 
