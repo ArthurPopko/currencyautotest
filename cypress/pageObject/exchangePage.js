@@ -1,6 +1,6 @@
 import testingData from "../data/testingData"
 
-class exchangePage {
+class ExchangePage {
     open() {
         cy.visit('/');
     }
@@ -36,9 +36,9 @@ class exchangePage {
     }
 
     assertCurrencyRates() {
-        // this.assertCurrencyRateFrom
-        // this.assertCurrencyRateTo
+        this.assertCurrencyRateFrom
+        this.assertCurrencyRateTo
     }
 }
 
-export default new exchangePage()
+export default new ExchangePage()

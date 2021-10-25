@@ -3,7 +3,7 @@
   "integrationFolder": "cypress/integration",
   "defaultCommandTimeout": 20000,
   "projectId": "i21j43",
-  "reporter": "cypress-testrail-reporter",
+  "reporter": "cypress-testrail-logs-screenshots",
   "reporterOptions": {
     "host": "https://integrationcypress.testrail.io",
     "username": "arth.p@mail.ru",
