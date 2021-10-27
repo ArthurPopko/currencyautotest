@@ -8,9 +8,25 @@
   "keywords": [],
   "author": "arthur",
   "license": "ISC",
-  "description": "",
+  "description": "homework p.12.3 task 10 ### Project Description ###",
   "devDependencies": {
     "chance": "^1.1.8",
-    "cypress": "^8.4.1"
+    "cypress": "^8.6.0",
+    "cypress-testrail-reporter": "^1.2.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QAfun/currencyautotest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/QAfun/currencyautotest/issues"
+  },
+  "homepage": "https://github.com/QAfun/currencyautotest#readme",
+  "dependencies": {
+    "autoprefixer": "^10.3.7",
+    "browserslist": "^4.17.5",
+    "caniuse-lite": "^1.0.30001271",
+    "growl": "^1.10.5",
+    "requests": "^0.3.0"
   }
 }

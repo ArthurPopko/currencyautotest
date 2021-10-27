@@ -1,5 +1,4 @@
-/// <reference types="cypress" />
-import exchangePage from "../pageObject/exchangePage";
+import ExchangePage from "../pageObject/exchangePage";
 import testingData from "../data/testingData"
 
 describe('Currency Exchange', () => {
@@ -31,16 +30,16 @@ describe('Currency Exchange', () => {
     5) Конечная точка теста - проверка рейта конверсии валют (рейт - это исходные данные из фикстуры)*/
 
     testingData.forEach(({description, amountData, toCurrency}) => {
-        it(`Positive: user performs exchange ${description} from USD to ${toCurrency}`, () => {
+        it(`Positive: user performs exchange ${description} from USD to ${toCurrency} C1`, () => {
             cy.get('@currencyData').then((currencyData) => {
                 cy.log("GIVEN User is at Exchange page")
-                exchangePage.open()
+                ExchangePage.open()
 
                 cy.log("When User performs exchange")
-                exchangePage.performExchange(amountData.amount, currencyData['base'], toCurrency)
+                ExchangePage.performExchange(amountData.amount, currencyData['base'], toCurrency)
 
                 cy.log('THEN currency rates appears')
-                exchangePage.assertCurrencyRates(toCurrency)
+                ExchangePage.assertCurrencyRates(toCurrency)
                 console.log(toCurrency);
             })
         })
