@@ -2,10 +2,10 @@
   "baseUrl": "https://www.xe.com/currencyconverter",
   "integrationFolder": "cypress/integration",
   "defaultCommandTimeout": 20000,
-  "projectId": "i21j43",
-  "reporter": "cypress-testrail-logs-screenshots",
+  "projectId": "rjcxc1",
+  "reporter": "cypress-testrail-reporter",
   "reporterOptions": {
-    "host": "https://integrationcypress.testrail.io",
+    "domain": "https://integrationcypress.testrail.io",
     "username": "arth.p@mail.ru",
     "password": "stalker82",
     "projectId": 1,
